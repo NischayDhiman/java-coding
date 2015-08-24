@@ -1,0 +1,165 @@
+import java.util.*;
+
+
+
+/*
+public class trees 
+{
+    class node
+    {
+        int data;
+        node left;
+        node right;    
+        node(int data)
+        {
+            this.data=data;
+        }           
+    } 
+    public static node root=null;
+    
+    public node find(node n,node x,int data)
+    {
+        if(n == null)
+        { 
+            System.out.println("not found");
+            return n ;
+        }
+        else
+        {
+            if(data == n.data)
+            {
+                return n;
+            }
+            else if(data < n.data)
+            {
+                return find(n.left,n,data);
+                
+            }
+            else
+                return find(n.right,n,data);
+                    
+        }
+    }
+    
+    public node insert1(node n,int data)
+    {
+        if(n == null)
+        {
+            n = new node(data);
+            return n ;
+        }
+        else
+        {
+            if(data < n.data)
+            {
+                 n.left = insert1(n.left,data);
+            }
+            else if(data > n.data)
+            {
+                 n.right = insert1(n.right,data);
+            }
+            
+        }
+        return n;
+    }
+    public void print(node n)
+    {
+        if(n==null) {
+            //System.out.println("empty");
+            return;
+        }
+        print(n.left);
+        System.out.print(" "+n.data);
+        print(n.right);
+        return ;
+    }
+    void inorder_traversal(node n)
+    {
+         if(n==null) {
+            //System.out.println("empty");
+            return;
+        }
+        inorder_traversal(n.left);
+        System.out.print(n.data);
+        inorder_traversal(n.right);
+        return ;
+    }
+    
+    void preorder_traversal(node n)
+    {
+         if(n==null) {
+            //System.out.println("empty");
+            return;
+        }
+        System.out.print(n.data);
+        preorder_traversal(n.left);
+        preorder_traversal(n.right);
+        return ;
+        
+    }
+    
+    
+    void postorder_traversal(node n)
+    {
+         if(n==null) {
+            //System.out.println("empty");
+            return;
+        }
+        postorder_traversal(n.left);
+        postorder_traversal(n.right);
+        System.out.print(n.data);
+    }
+    
+   
+  
+    */
+/**
+ *
+ * @author NISCHAY D
+ */
+public class trees
+{
+    public class  Node
+    {
+        public int value;
+        Node left;
+        Node right;
+        Node(int data)
+        {
+            this.value=data;
+        }
+        
+    }
+   public void insert1(Node node, int value) {
+    if (value < node.value)
+    {
+        if (node.left != null)
+        {
+            insert1(node.left, value);
+        } 
+        else
+        {     
+            node.left = new Node(value);
+        }
+    } 
+    else if (value > node.value)
+    {
+        if (node.right != null)
+        {
+            insert1(node.right, value);
+        }
+        else
+        {
+            node.right = new Node(value);
+        }
+    }
+  }
+
+public static void main(String [] args)
+{ 
+     trees bt = new trees();
+     Node root=null;
+     bt.insert1(root, 50);
+     bt.insert1(root, 150);
+}
+}
