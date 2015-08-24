@@ -1,0 +1,172 @@
+import java.util.*;
+public class linked_list {
+    class node
+    {
+        int data;
+        node next;
+        node(int data)
+        {
+            this.data=data;
+        }
+    }
+    private node root=null;
+    void insertbeg(int data)
+    {
+        if(root == null)
+            root=new node(data);
+        else
+        {
+            node n=new node(data);
+            n.next=root;
+            root=n;
+        }
+    }
+    void insertloc(int loc, int data)
+    {
+        if(loc == 0)
+            insertbeg(data);
+        node ptr=root;
+        if(root == null)
+        {
+            insertbeg(data);
+            return ;
+        }
+        node n=new node(data);
+        while(--loc != 1)
+        {
+           if(ptr.next == null)
+           {
+               break;
+           }
+            ptr=ptr.next;
+            
+        }
+        n.next=ptr.next;
+        ptr.next=n;
+    }
+    void insertlast(int data)
+    {
+        node n=new node(data);
+        node ptr=root;
+        if(ptr == null)
+        {
+            insertbeg(data);
+        }
+        while(ptr.next != null)
+        {
+            ptr=ptr.next;
+        }
+        ptr.next=n;
+    }
+    void deletebeg()
+    {
+        if(root == null)
+            return;
+        else
+        {
+            root=root.next;
+        }
+    }
+    void deleteloc(int loc)
+    {
+         if(loc == 0)
+            deletebeg();
+        node ptr=root;
+        node ptr_prev=root;
+        if(root == null)
+        {
+            return ;
+        }
+        
+        while(--loc != 1)
+        {
+           if(ptr.next == null)
+           {
+               break;
+           }
+           ptr_prev=ptr;
+           ptr=ptr.next;
+            
+        }
+        ptr_prev.next=ptr.next;
+    }
+    void deletelast()
+    {
+        node ptr=root;
+        node ptr_prev=root;
+        if(ptr == null)
+        {
+            return;
+        }
+        while(ptr.next != null)
+        {
+            ptr_prev=ptr;
+            ptr=ptr.next;
+        }
+        ptr_prev.next=null; 
+    }
+    void print()
+    {
+        if (root == null)
+            return ;
+        else
+        {   
+            node p=root;
+            while(p != null)
+            {
+                System.out.println(p.data);
+                p=p.next;
+            }
+        }
+    }
+    public static void main(String[] args) 
+    {
+        linked_list ob=new linked_list();
+        
+        System.out.println("1 Inserting at beginning");
+        System.out.println("2 Inserting at location");      
+        System.out.println("3 Inserting at last");      
+        System.out.println("4 Deleting the first node");
+        System.out.println("5 Deleting the node at location");
+        System.out.println("6 Deleting the node at last");
+        System.out.println("7 Printing linked list");
+        System.out.println("8 EXIT");
+        Scanner sc=new Scanner (System.in);
+        int i;
+        while(true)
+        {   System.out.println("enter the choice for operation on linked list");
+            i=sc.nextInt();
+            switch (i)
+            {
+                case 1:
+                    ob.insertbeg(sc.nextInt());
+                    break;
+                case 2:
+                    System.out.println("enter the loc and value");
+                    ob.insertloc(sc.nextInt(),sc.nextInt());
+                    break;
+                case 3:
+                    ob.insertlast(sc.nextInt());
+                    break;
+                case 4:
+                    ob.deletebeg();
+                    break;
+                case 5:
+                    ob.deleteloc(sc.nextInt());
+                    break;
+                case 6:
+                    ob.deletelast();
+                    break;
+                case 7:
+                    ob.print();
+                    break;
+                case 8:
+                    return;
+                    
+                    
+            }
+                    
+        }
+    
+    }
+}
