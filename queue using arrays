@@ -1,0 +1,53 @@
+//import java.io.*;
+import java.util.*;
+//import java.lang.*;
+
+public class queue
+{
+	int[] q;
+	int front;
+	int rear;
+	queue(int size)
+	{
+		q=new int[size];
+		front=0;
+		rear=0;
+	}
+	void enqueue(int value)
+	{
+		q[rear]=value;
+		rear++;
+	}
+	int dequeue()
+	{
+		int value=q[front];
+		front++;
+		return value;	
+	}
+	int isempty()
+	{
+		if(rear==front)
+			return 1;
+		else
+			return 0;
+
+	}
+	public static void main(String args[])
+	{
+		queue ob;
+		System.out.println("enter the size of queue");
+		Scanner sc=new Scanner(System.in);
+		int i=sc.nextInt();
+		ob=new queue(i);
+		while(i-- != 0)
+		{
+			System.out.println("enter the value to enqueue");
+			int z= sc.nextInt();
+			ob.enqueue(z);	
+		}
+		while(ob.isempty() != 1 )
+		{
+			System.out.println(ob.dequeue());		
+		}
+	}
+}
