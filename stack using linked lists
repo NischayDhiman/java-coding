@@ -1,0 +1,64 @@
+
+import java.util.*;
+
+public class Stacks_ll 
+{
+    class node 
+    {
+        int data;
+        node next;
+        
+        node(int data)
+        {
+            this.data=data;
+        }
+       
+    }
+    private node root=null;
+    void push(int data)
+    {
+        if(root == null)
+        {
+            root=new node(data);
+        }
+        else
+        {
+           node n=new node(data);
+           n.next=root;
+           root=n;
+        }
+    }
+    int pop()
+    {
+        int data=root.data;
+        root=root.next;
+        return data;
+    }
+    int isempty()
+    {
+        if(root==null)
+            return 1;
+        else
+            return 0;
+    }
+    public static void main(String[] args) 
+    {
+       Stacks_ll ob=new Stacks_ll();
+       Scanner sc=new Scanner(System.in);
+       System.out.println("enter the size of stack");
+       int i=sc.nextInt();
+       while(i-- != 0)
+       {
+           System.out.println("enter the value to push");
+           int c = sc.nextInt();
+           ob.push(c);
+           
+       }
+       while(ob.isempty() != 1)
+       {
+           
+           System.out.println(ob.pop());
+       }
+       
+    }
+}
